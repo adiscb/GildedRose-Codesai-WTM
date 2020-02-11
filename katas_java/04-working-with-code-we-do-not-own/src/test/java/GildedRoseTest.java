@@ -25,5 +25,22 @@ public class GildedRoseTest {
 
         assertThat(item.quality).isEqualTo(8);
     }
-    
+
+    @Test
+    public void should_not_let_quality_go_below_zero() {
+        Item item = new Item("ITEM", 0,0);
+
+        shop.updateInventory(item);
+
+        assertThat(item.quality).isEqualTo(0);
+    }
+
+    @Test
+    public void should_increase_qualit_of_aged_Brie_the_older_it_gets() {
+        Item item = new Item("agedBrie", 2, 4);;
+
+        shop.updateInventory(item);
+
+        assertThat(item.quality).isEqualTo(5);
+    }
 }
