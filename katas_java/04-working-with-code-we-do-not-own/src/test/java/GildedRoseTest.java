@@ -36,8 +36,17 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void should_increase_qualit_of_aged_Brie_the_older_it_gets() {
+    public void should_increase_quality_of_aged_Brie_the_older_it_gets() {
         Item item = new Item("agedBrie", 2, 4);;
+
+        shop.updateInventory(item);
+
+        assertThat(item.quality).isEqualTo(5);
+    }
+
+    @Test
+    public void should_never_decrease_quality_when_item_is_Sulfuras() {
+        Item item = new Item("Sulfuras", 2,5);
 
         shop.updateInventory(item);
 

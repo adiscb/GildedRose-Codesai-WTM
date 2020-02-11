@@ -2,15 +2,15 @@ import items.Item;
 
 public class Shop {
     public void updateInventory(Item item) {
-        item.sellIn--;
+        Product product = new Product(item);
+        product.decreaseSellIn();
         if ("agedBrie".equals(item.name)) {
-            item.quality++;
+            product.increaseQuality();
         } else {
-            item.quality--;
-            if (item.sellIn < 0) {
-                item.quality--;
+            if (!"Sulfuras".equals(item.name)) {
+                product.decrementQuality();
             }
-            if (item.quality < 0) item.quality = 0;
+
         }
     }
 }
